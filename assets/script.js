@@ -1,4 +1,4 @@
-// Setting variables for html elements and the questions array 
+// Setting variables for html elements 
 
 // Clicking start button starts the quiz
 
