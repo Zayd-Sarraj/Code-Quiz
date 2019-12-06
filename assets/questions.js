@@ -16,8 +16,8 @@ var questions = [
     },
     {
       title: "What is the correct syntax for referring to an external script called 'js.js'?",
-      choices: ['<script src="js.js">', '<script href="js.js">', '<script link="js.js">', '<script name="js.js">'],
-      answer: '<script src="js.js">'
+      choices: ["<script src='js.js'>", "<script href='js.js'>", "<script link='js.js'>", "<script name='js.js'>"],
+      answer: "<script src='js.js'>"
     },
     {
       title: "What kind of tag does an external javascript file need?",
@@ -37,7 +37,7 @@ var questions = [
     {
       title: "What's the correct syntax for an if sattement in javascript?",
       choices: ["if i == 2 then", "if: i = 2; then", "if (i == 2)", "if i=2{then}"],
-      answer: ""
+      answer: "if (i == 2)"
     },
     {
       title: "How do you say 'does not equal' in javascript?",
