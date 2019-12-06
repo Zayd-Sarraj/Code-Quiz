@@ -5,16 +5,17 @@ var gameStartButton = document.querySelector("#startButton");
 var timeLeft = ""
 var i = ""
 var timerInterval = ""
+var highScores = []
 // Timer function
 function countDown() {
-    if (timeLeft === 0) {
+    if (timeLeft <= 0) {
         nextQuestion()
     }
     else {
     timeLeft--;
     timeCount.textContent = "Time: " + timeLeft;}
 }
-// function to start the game and time 
+// function to start the game and timer 
 function startGame() {
     i = 0;
     timeLeft = 150;
@@ -25,14 +26,18 @@ function startGame() {
 function nextQuestion() {
     console.log(i)
     // first check if quiz is over or if time is out 
-    if (i > 9 || timeLeft < 1) {
+    if (i > 9 || timeLeft <= 0) {
         clearInterval(timerInterval)
         quizQs.textContent = "New Highscore: " + timeLeft;
         var scoreInput = document.createElement("input")
-        scoreInput.setAttribute("class", "mx-auto px-auto")
+        scoreInput.setAttribute("class", "mr-2 ml-auto")
         scoreInput.setAttribute("value", "Enter your name")
+        var scoreSubmit = document.createElement("button")
+        scoreSubmit.setAttribute("class", "btn btn-outline-primary submit mr-auto")
         quizAs.innerHTML = " "
+        scoreSubmit.textContent = "Submit"
         quizAs.appendChild(scoreInput)
+        quizAs.appendChild(scoreSubmit)
     }
 
     else {
@@ -60,18 +65,23 @@ function nextQuestion() {
     }
 }
 // Clicking the start! button starts the game 
-gameStartButton.addEventListener("click", function (event) { startGame() })
+gameStartButton.addEventListener("click", function () { startGame() })
 // If user clicks a button 
 quizAs.getElementsByClassName("btn-primary", addEventListener("click", function (event) {
     //  If the button text matches the answer, they move on to the next question
+    console.log(event.target)
     if (event.target.textContent == questions[i].answer) {
         i++;
         nextQuestion();
     }
     // If the button is any other answer, timer loses 10 seconds
-    else {
-        timeLeft = timeLeft - 10;
+    else if (event.target == "button") {
+    
+     timeLeft -= 15;
+     timeCount.textContent = "Time: " + timeLeft;
+
     }
+    
 
 }
 ))
@@ -82,10 +92,18 @@ quizAs.getElementsByClassName("btn-primary", addEventListener("click", function 
 function viewHighScores () {
     quizQs.textContent = "High Scores"
     quizAs.innerHTML = " "
-
+    for (var i = 0; i < highScores.length; i++) {
+        var highScore = highScores[i];
+    
+        var li = document.createElement("li");
+        li.textContent = highScore;
+        li.setAttribute("data-index", i);
+    
+        quizAs.appendChild(li);
+      }
+      gameStartButton.textContent = "Try Again!"
     
 }
-
 
 // }
 // After input of name or if 'view highscores' is clicked, highscores are displayed 
