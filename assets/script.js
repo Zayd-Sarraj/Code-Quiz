@@ -69,13 +69,13 @@ gameStartButton.addEventListener("click", function () { startGame() })
 // If user clicks a button 
 quizAs.getElementsByClassName("btn-primary", addEventListener("click", function (event) {
     //  If the button text matches the answer, they move on to the next question
-    console.log(event.target)
+    console.log(event.target.nodeName)
     if (event.target.textContent == questions[i].answer) {
         i++;
         nextQuestion();
     }
     // If the button is any other answer, timer loses 10 seconds
-    else if (event.target == "button") {
+    else if (event.target.nodeName == "BUTTON") {
     
      timeLeft -= 15;
      timeCount.textContent = "Time: " + timeLeft;
