@@ -27,4 +27,4 @@ CSS
 Javascript
 ​
 #  Direct link to site:
-https://zaydorade.github.io/Code-Quiz/
+https://zayd-sarraj.github.io/Code-Quiz/
